@@ -45,7 +45,7 @@ streamlit run app.py
 
 | Module | Title | Status | Last Updated |
 |--------|-------|--------|--------------|
-| M1 | Proof of Work Monitor | 🔲 Not started | — |
+| M1 | Proof of Work Monitor | ✅ Complete | 20 Apr 2026 |
 | M2 | Block Header Analyzer | 🔲 Not started | — |
 | M3 | Difficulty History | 🔲 Not started | — |
 | M4 | AI Component (Difficulty Predictor) | 🔲 Not started | — |
@@ -80,33 +80,51 @@ streamlit run app.py
 
 ---
 
+### Session 2 — M1 Proof of Work Monitor (20 April 2026)
+
+- [x] `modules/m1_pow_monitor.py` implemented with full visual logic
+- [x] `api/blockchain_client.py` extended with all 3 APIs from the project spec
+- [x] Current difficulty displayed with target derived from `bits` field
+- [x] Latest block hash and nonce shown
+- [x] Network hash rate estimated from difficulty
+- [x] Inter-block time histogram and time series plotted (expected: exponential distribution, λ = 1/600 s)
+- [x] Automatic refresh integrated in `app.py`
+- Sources used:
+  - **Blockstream Esplora**: latest block + recent block times
+  - **mempool.space**: current adjustment cycle data
+  - **Blockchain.com Charts API**: historical difficulty context (30 data points)
+- Verified live: block 945923, hash prefix `0000000000000000`, 30 historical difficulty points returned
+
+---
+
 ## Current Progress
 
-- Repository set up and connected to GitHub Classroom.
-- README structured for weekly tracking and professor feedback.
-- First API call working: fetches live Bitcoin block data from `blockstream.info`.
-- Project structure initialized following the template.
+- M1 complete: PoW Monitor showing live difficulty, block time distribution, and hash rate estimate using all 3 APIs from the spec.
+- Dashboard runs with `streamlit run app.py` and refreshes automatically.
+- Project structure clean: `api/`, `modules/`, `app.py`, `.gitignore` all in place.
 
 ---
 
 ## Next Step
 
-Implement **M1 (Proof of Work Monitor)** in Streamlit:
+Implement **M2 (Block Header Analyzer)**:
 
-- Fetch and display current difficulty with visual representation as leading-zero threshold.
-- Plot inter-block time distribution (expected: exponential with λ = 1/600).
-- Estimate current network hash rate from difficulty.
+- Parse the full 80-byte structure of the latest block header (version, prev_hash, merkle_root, timestamp, bits, nonce).
+- Verify PoW locally using `hashlib`: SHA256(SHA256(header)) < target.
+- Count leading zero bits in the resulting hash.
+- Handle little-endian byte order correctly when parsing header fields.
 
 ---
 
 ## Main Problem / Blocker
 
-_None currently.* Evaluating whether to use Streamlit (simpler) or Dash (more flexible for real-time WebSocket updates from mempool.space).
+_None currently._
 
 ---
 
 ## External References
 
 - Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System.* <https://bitcoin.org/bitcoin.pdf>
-- Blockstream API docs: <https://github.com/Blockstream/esplora/blob/master/API.md>
-- Mempool.space API docs: <https://mempool.space/docs/api/rest>
+- Blockstream Esplora API: <https://github.com/Blockstream/esplora/blob/master/API.md>
+- Mempool.space REST API: <https://mempool.space/docs/api/rest>
+- Blockchain.com Charts API: <https://www.blockchain.com/en/api/charts_api>
