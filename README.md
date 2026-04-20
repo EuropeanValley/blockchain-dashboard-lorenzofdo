@@ -110,3 +110,21 @@ _None currently.* Evaluating whether to use Streamlit (simpler) or Dash (more fl
 - Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System.* <https://bitcoin.org/bitcoin.pdf>
 - Blockstream API docs: <https://github.com/Blockstream/esplora/blob/master/API.md>
 - Mempool.space API docs: <https://mempool.space/docs/api/rest>
+
+<!-- student-repo-auditor:teacher-feedback:start -->
+## Teacher Feedback
+
+### Kick-off Review
+
+Review time: 2026-04-20 13:58 CEST
+Status: Amber
+
+Strength:
+- Your repository shows a strong kickoff start with a real API call and clear theory notes.
+
+Improve now:
+- Adapt the README more closely to the exact classroom kickoff format so the required fields are explicit and easy to validate.
+
+Next step:
+- Keep the current content, but rename or align the README sections and field labels so student information, AI approach, module tracking, and next step match the requested format exactly.
+<!-- student-repo-auditor:teacher-feedback:end -->
