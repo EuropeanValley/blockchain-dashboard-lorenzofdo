@@ -1,39 +1,27 @@
 # CryptoChain Analyzer Dashboard
 
-### Hash Functions and Blockchain — Cryptography, UAX 2025–26
-
+**Hash Functions and Blockchain — Cryptography, UAX 2025–26**
 **Prof. Jorge Calvo**
 
 ---
 
 ## Student Information
 
-| Field | Detail |
-|-------|--------|
-| **Name** | Lorenzo Ferrer De Oya |
-| **GitHub username** | [@lorenzofdo](https://github.com/lorenzofdo) |
-| **Repository** | [blockchain-dashboard-lorenzofdo](https://github.com/EuropeanValley/blockchain-dashboard-lorenzofdo) |
+- **Name:** Lorenzo Ferrer De Oya
+- **GitHub username:** [@lorenzofdo](https://github.com/lorenzofdo)
+- **Repository:** [blockchain-dashboard-lorenzofdo](https://github.com/EuropeanValley/blockchain-dashboard-lorenzofdo)
 
 ---
 
 ## Project Title
 
-**CryptoChain Analyzer Dashboard** — Real-time Bitcoin cryptographic metrics with AI-powered difficulty prediction.
+CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with AI-powered difficulty prediction.
 
 ---
 
-## How to Run
+## Chosen AI Approach
 
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
-
----
-
-## Chosen AI Approach (M4)
-
-**Predictor** — Time-series model to predict the next Bitcoin difficulty adjustment.
+**Option chosen:** Predictor — time-series model to predict the next Bitcoin difficulty adjustment.
 
 **Justification:** The difficulty adjustment is a deterministic, periodic process (every 2016 blocks, ~2 weeks). Historical adjustment values form a time series with learnable patterns tied to hash rate growth trends. A regression or Prophet model trained on past adjustments can forecast the next value with measurable error (MAE). This is more meaningful than anomaly detection for this dataset size and more interpretable than a black-box LSTM.
 
@@ -41,7 +29,7 @@ streamlit run app.py
 
 ---
 
-## Module Status
+## Module Tracking
 
 | Module | Title | Status | Last Updated |
 |--------|-------|--------|--------------|
@@ -54,6 +42,27 @@ streamlit run app.py
 | M7 | Second AI Approach *(optional)* | 🔲 Not started | — |
 
 > Status legend: 🔲 Not started · 🔄 In progress · ✅ Complete · ⚠️ Has issues
+
+---
+
+## Current Progress
+
+- Repository set up and connected to GitHub Classroom.
+- README structured for weekly tracking and professor feedback.
+- First API call working: fetches live Bitcoin block data from `blockstream.info`.
+- Project structure initialized: `api/`, `modules/`, `app.py`, `.gitignore`.
+
+---
+
+## Next Step
+
+Implement first Streamlit panel for M1 using live difficulty data from Blockstream API.
+
+---
+
+## Main Problem or Blocker
+
+Choosing between Streamlit simplicity and Dash flexibility for future real-time features.
 
 ---
 
@@ -80,51 +89,36 @@ streamlit run app.py
 
 ---
 
-## Current Progress
-
-- Repository set up and connected to GitHub Classroom.
-- README structured for weekly tracking and professor feedback.
-- First API call working: fetches live Bitcoin block data from `blockstream.info`.
-- Project structure initialized following the template.
-
----
-
-## Next Step
-
-Implement **M1 (Proof of Work Monitor)** in Streamlit:
-
-- Fetch and display current difficulty with visual representation as leading-zero threshold.
-- Plot inter-block time distribution (expected: exponential with λ = 1/600).
-- Estimate current network hash rate from difficulty.
-
----
-
-## Main Problem / Blocker
-
-_None currently.* Evaluating whether to use Streamlit (simpler) or Dash (more flexible for real-time WebSocket updates from mempool.space).
-
----
-
 ## External References
 
-- Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System.* <https://bitcoin.org/bitcoin.pdf>
-- Blockstream API docs: <https://github.com/Blockstream/esplora/blob/master/API.md>
-- Mempool.space API docs: <https://mempool.space/docs/api/rest>
+- Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System.* https://bitcoin.org/bitcoin.pdf
+- Blockstream API docs: https://github.com/Blockstream/esplora/blob/master/API.md
+- Mempool.space API docs: https://mempool.space/docs/api/rest
 
-<!-- student-repo-auditor:teacher-feedback:start -->
+---
+
 ## Teacher Feedback
 
-### Kick-off Review
+### Kick-off Review — 20 April 2026
+**Status:** 🟡 Amber
 
-Review time: 2026-04-20 13:58 CEST
-Status: Amber
+**Strength:**
+- Repository shows a strong kickoff start with a real API call and clear theory notes.
 
-Strength:
-- Your repository shows a strong kickoff start with a real API call and clear theory notes.
+**Improve:**
+- Adapt the README more closely to the exact classroom kickoff format so required fields are explicit and easy to validate.
 
-Improve now:
-- Adapt the README more closely to the exact classroom kickoff format so the required fields are explicit and easy to validate.
+**Action taken:**
+- Section names aligned to kickoff format: Student Information, Chosen AI Approach, Module Tracking, Current Progress, Next Step, Main Problem or Blocker.
+- Student Information changed from table to explicit labeled list.
+- Next Step reduced to one concrete, small action.
+- Main Problem or Blocker cleaned up and made honest.
 
-Next step:
-- Keep the current content, but rename or align the README sections and field labels so student information, AI approach, module tracking, and next step match the requested format exactly.
-<!-- student-repo-auditor:teacher-feedback:end -->
+---
+
+## How to Run
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
