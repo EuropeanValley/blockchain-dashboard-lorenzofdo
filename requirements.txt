@@ -1,4 +1,6 @@
 requests
-pandas
-plotly
 streamlit
+plotly
+pandas
+numpy
+prophet

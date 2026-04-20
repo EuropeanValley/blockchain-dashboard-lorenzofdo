@@ -1,28 +1,18 @@
-"""Simple Streamlit entry point for the student project."""
-
 import streamlit as st
 
-from modules.m1_pow_monitor import render as render_m1
-from modules.m2_block_header import render as render_m2
-from modules.m3_difficulty_history import render as render_m3
-from modules.m4_ai_component import render as render_m4
-
-st.set_page_config(page_title="Blockchain Dashboard", layout="wide")
-
-st.title("Blockchain Dashboard")
-
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["M1 - PoW Monitor", "M2 - Block Header", "M3 - Difficulty History", "M4 - AI Component"]
+st.set_page_config(
+    page_title="CryptoChain Analyzer",
+    page_icon="⛓️",
+    layout="wide"
 )
 
-with tab1:
-    render_m1()
+st.title("⛓️ CryptoChain Analyzer Dashboard")
+st.caption("Live Bitcoin cryptographic metrics — Lorenzo Ferrer De Oya · UAX 2025–26")
 
-with tab2:
-    render_m2()
+st.info("🚧 Dashboard under construction. Modules will appear here progressively.")
 
-with tab3:
-    render_m3()
-
-with tab4:
-    render_m4()
+# Modules will be imported here as they are completed:
+# from modules.m1_pow_monitor import render as m1
+# from modules.m2_block_header import render as m2
+# from modules.m3_difficulty_history import render as m3
+# from modules.m4_ai_predictor import render as m4
