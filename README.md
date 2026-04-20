@@ -97,25 +97,6 @@ Choosing between Streamlit simplicity and Dash flexibility for future real-time 
 
 ---
 
-## Teacher Feedback
-
-### Kick-off Review — 20 April 2026
-**Status:** 🟡 Amber
-
-**Strength:**
-- Repository shows a strong kickoff start with a real API call and clear theory notes.
-
-**Improve:**
-- Adapt the README more closely to the exact classroom kickoff format so required fields are explicit and easy to validate.
-
-**Action taken:**
-- Section names aligned to kickoff format: Student Information, Chosen AI Approach, Module Tracking, Current Progress, Next Step, Main Problem or Blocker.
-- Student Information changed from table to explicit labeled list.
-- Next Step reduced to one concrete, small action.
-- Main Problem or Blocker cleaned up and made honest.
-
----
-
 ## How to Run
 
 ```bash
