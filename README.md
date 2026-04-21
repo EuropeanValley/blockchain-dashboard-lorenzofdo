@@ -50,7 +50,7 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 - M1 complete: dashboard with live Bitcoin Proof-of-Work metrics using public APIs.
 - Real data connected from Blockstream, mempool.space, and Blockchain.com.
 - Visual dashboard running in Streamlit with charts for difficulty, block timing, target threshold, and network hashrate.
-- M2 started: preparing local parsing and verification of the latest Bitcoin block header.
+- M2 in progress: latest block header is rebuilt locally, double-SHA256 is checked against the API hash, and PoW verification is already visible in the dashboard.
 
 ---
 
@@ -102,6 +102,15 @@ Implement M2 (Block Header Analyzer):
 - [x] Inter-block time distribution and recent interval sequence plotted
 - [x] Dashboard auto-refresh integrated in `app.py`
 - [x] Dashboard-style layout prioritised over landing-page style presentation
+
+### Session 3 — M2 Block Header Analyzer (20 April 2026)
+
+- [x] `api/blockchain_client.py` extended with local header serialization and PoW verification helpers
+- [x] `modules/m2_block_header.py` now rebuilds the 80-byte header for the latest block
+- [x] Local verification implemented with `SHA256(SHA256(header)) < target`
+- [x] Explorer hash and locally computed hash compared directly in the dashboard
+- [x] Added byte-level header map and header-to-hash pipeline visualizations
+- [x] Added explanation of byte reversal and little-endian handling
 
 ---
 

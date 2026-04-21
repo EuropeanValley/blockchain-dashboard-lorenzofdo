@@ -6,6 +6,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from modules.m1_pow_monitor import render as render_m1
+from modules.m2_block_header import render as render_m2
 
 
 def _auto_refresh(interval_seconds: int) -> None:
@@ -286,11 +287,7 @@ if auto_refresh_enabled:
 if selected_module == "M1 Mining Dashboard":
     render_m1()
 elif selected_module == "M2 Block Header Analyzer":
-    _render_placeholder(
-        "02",
-        "Block Header Analyzer",
-        "This module will parse the 80-byte Bitcoin block header, reconstruct each field with the correct byte order and verify the proof of work locally with hashlib.",
-    )
+    render_m2()
 elif selected_module == "M3 Difficulty History":
     _render_placeholder(
         "03",
