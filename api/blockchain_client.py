@@ -50,6 +50,16 @@ def get_block(block_hash: str, source: str = "blockstream") -> dict[str, Any]:
     return _get_json(f"{_esplora_base(source)}/block/{block_hash}")
 
 
+def get_block_hash_at_height(height: int, source: str = "blockstream") -> str:
+    """Return the block hash at a specific height."""
+    return _get_text(f"{_esplora_base(source)}/block-height/{int(height)}")
+
+
+def get_block_at_height(height: int, source: str = "blockstream") -> dict[str, Any]:
+    """Return one block by height using an Esplora-compatible API."""
+    return get_block(get_block_hash_at_height(height, source=source), source=source)
+
+
 def get_latest_block(source: str = "blockstream") -> dict[str, Any]:
     """Return the latest block from Blockstream or mempool.space."""
     return get_block(get_latest_block_hash(source=source), source=source)

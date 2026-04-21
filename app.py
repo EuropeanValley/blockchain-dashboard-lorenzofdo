@@ -7,6 +7,7 @@ import streamlit.components.v1 as components
 
 from modules.m1_pow_monitor import render as render_m1
 from modules.m2_block_header import render as render_m2
+from modules.m3_difficulty_history import render as render_m3
 
 
 def _auto_refresh(interval_seconds: int) -> None:
@@ -289,12 +290,7 @@ if selected_module == "M1 Mining Dashboard":
 elif selected_module == "M2 Block Header Analyzer":
     render_m2()
 elif selected_module == "M3 Difficulty History":
-    _render_placeholder(
-        "03",
-        "Difficulty History",
-        "This module will study retarget epochs of 2016 blocks, timing ratios, and long-range difficulty movement across multiple adjustment periods.",
-        dark=True,
-    )
+    render_m3()
 else:
     _render_placeholder(
         "04",
