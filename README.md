@@ -21,11 +21,11 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 
 ## Chosen AI Approach
 
-**Option chosen:** Predictor — time-series model to predict the next Bitcoin difficulty adjustment.
+**Option chosen:** Predictor — interpretable regression model to predict the next Bitcoin difficulty adjustment.
 
-**Justification:** The difficulty adjustment is a deterministic, periodic process (every 2016 blocks, ~2 weeks). Historical adjustment values form a time series with learnable patterns tied to hash rate growth trends. A regression or Prophet model trained on past adjustments can forecast the next value with measurable error (MAE). This is more meaningful than anomaly detection for this dataset size and more interpretable than a black-box LSTM.
+**Justification:** The difficulty adjustment is a deterministic, periodic process (every 2016 blocks, ~2 weeks). Completed retarget periods provide real historical rows with timing ratios, difficulty changes, and previous adjustment behavior. A lightweight regression model is appropriate because it is interpretable, can be evaluated with held-out retarget periods, and is easier to explain than a black-box model.
 
-**Planned evaluation metrics:** MAE, MAPE, and visual comparison of predicted vs actual difficulty over held-out adjustment periods.
+**Evaluation metrics:** MAE, MAPE, and visual comparison of predicted vs actual difficulty over held-out adjustment periods.
 
 ---
 
@@ -36,7 +36,7 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 | M1 | Proof of Work Monitor | ✅ Complete | 20 Apr 2026 |
 | M2 | Block Header Analyzer | ✅ Complete | 21 Apr 2026 |
 | M3 | Difficulty History | ✅ Complete | 21 Apr 2026 |
-| M4 | AI Component (Difficulty Predictor) | 🔄 In progress | 21 Apr 2026 |
+| M4 | AI Component (Difficulty Predictor) | ✅ Complete | 27 Apr 2026 |
 | M5 | Merkle Proof Verifier *(optional)* | 🔲 Not started | — |
 | M6 | Security Score *(optional)* | 🔲 Not started | — |
 | M7 | Second AI Approach *(optional)* | 🔲 Not started | — |
@@ -50,18 +50,19 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 - M1 complete: dashboard with live Bitcoin Proof-of-Work metrics using public APIs.
 - M2 complete: latest block header is rebuilt locally, double-SHA256 is checked against the API hash, and PoW verification is visible in the dashboard.
 - M3 complete: dashboard implemented with completed 2016-block periods, retarget markers, timing ratios, response map, consensus clamp explanation, and one-year difficulty context.
-- Real data connected from Blockstream, mempool.space, and Blockchain.com.
+- M4 complete: regression-based difficulty predictor trained on real completed retarget periods, evaluated with MAE/MAPE, and integrated into the dashboard.
+- Real data connected from Blockstream, mempool.space, and Blockchain.com, with centralized API error handling.
+- Final report outline started in `report/REPORT_OUTLINE.md`.
 
 ---
 
 ## Next Step
 
-Start M4 (AI Component - Difficulty Predictor):
+Checkpoint actions before 29 April 2026:
 
-- Prepare a historical difficulty-adjustment dataset from completed retarget periods.
-- Train a first regression/time-series predictor for the next difficulty adjustment.
-- Evaluate the model with MAE and MAPE.
-- Integrate the prediction and evaluation metrics into the dashboard.
+- Run a final Streamlit walkthrough of M1, M2, M3, and M4 with live APIs.
+- Capture screenshots for the final report.
+- Decide whether to attempt an optional module (M5, M6, or M7) after the checkpoint.
 
 ---
 
@@ -124,6 +125,22 @@ Start M4 (AI Component - Difficulty Predictor):
 - [x] Add retarget response map comparing actual timing ratio with the next difficulty adjustment
 - [x] Add Bitcoin retarget clamp explanation (`0.25x` to `4x`)
 - [x] Validate live data: recent formula response and observed next adjustment matched closely
+
+### Session 5 — M4 AI Difficulty Predictor (27 April 2026)
+
+- [x] `modules/m4_ai_component.py` implemented as the AI component
+- [x] Historical dataset built from completed 2016-block retarget periods
+- [x] Interpretable regression model trained with real blockchain features
+- [x] Holdout evaluation added with MAE and MAPE
+- [x] Prediction, feature weights, errors, and training data integrated into the dashboard
+- [x] Current next-retarget forecast compared with mempool.space reference estimate
+
+### Session 6 — Checkpoint Review Prep (27 April 2026)
+
+- [x] Reviewed implemented M1-M4 modules against the project brief
+- [x] Centralized API request error handling in `api/blockchain_client.py`
+- [x] Added `report/REPORT_OUTLINE.md` with the required final report structure
+- [ ] Run final Streamlit walkthrough with live APIs before the 29 April checkpoint
 
 ---
 

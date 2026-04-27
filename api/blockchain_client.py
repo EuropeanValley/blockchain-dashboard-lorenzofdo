@@ -20,15 +20,27 @@ class BlockchainAPIError(RuntimeError):
     """Raised when a blockchain API request fails."""
 
 
+def _request(url: str) -> requests.Response:
+    """Fetch one URL and convert transport/status failures into app errors."""
+    try:
+        response = _SESSION.get(url, timeout=DEFAULT_TIMEOUT)
+        response.raise_for_status()
+    except requests.RequestException as exc:
+        status_code = exc.response.status_code if exc.response is not None else "n/a"
+        raise BlockchainAPIError(f"API request failed ({status_code}): {url}") from exc
+    return response
+
+
 def _get_json(url: str) -> Any:
-    response = _SESSION.get(url, timeout=DEFAULT_TIMEOUT)
-    response.raise_for_status()
-    return response.json()
+    response = _request(url)
+    try:
+        return response.json()
+    except ValueError as exc:
+        raise BlockchainAPIError(f"API returned invalid JSON: {url}") from exc
 
 
 def _get_text(url: str) -> str:
-    response = _SESSION.get(url, timeout=DEFAULT_TIMEOUT)
-    response.raise_for_status()
+    response = _request(url)
     return response.text.strip()
 
 

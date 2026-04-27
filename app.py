@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 from modules.m1_pow_monitor import render as render_m1
 from modules.m2_block_header import render as render_m2
 from modules.m3_difficulty_history import render as render_m3
+from modules.m4_ai_component import render as render_m4
 
 
 def _auto_refresh(interval_seconds: int) -> None:
-    components.html(
+    st.html(
         f"""
         <script>
         setTimeout(function () {{
@@ -19,7 +19,7 @@ def _auto_refresh(interval_seconds: int) -> None:
         }}, {interval_seconds * 1000});
         </script>
         """,
-        height=0,
+        unsafe_allow_javascript=True,
     )
 
 
@@ -292,8 +292,4 @@ elif selected_module == "M2 Block Header Analyzer":
 elif selected_module == "M3 Difficulty History":
     render_m3()
 else:
-    _render_placeholder(
-        "04",
-        "AI Component",
-        "This module will forecast the next Bitcoin difficulty adjustment and later compare predicted versus observed values with explicit evaluation metrics.",
-    )
+    render_m4()
