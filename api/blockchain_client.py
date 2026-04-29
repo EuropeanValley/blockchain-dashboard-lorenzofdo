@@ -72,6 +72,16 @@ def get_block_at_height(height: int, source: str = "blockstream") -> dict[str, A
     return get_block(get_block_hash_at_height(height, source=source), source=source)
 
 
+def get_block_txids(block_hash: str, source: str = "blockstream") -> list[str]:
+    """Return all transaction IDs included in a block."""
+    return _get_json(f"{_esplora_base(source)}/block/{block_hash}/txids")
+
+
+def get_tx_merkle_proof(txid: str, source: str = "blockstream") -> dict[str, Any]:
+    """Return an Electrum-style Merkle inclusion proof for a transaction."""
+    return _get_json(f"{_esplora_base(source)}/tx/{txid}/merkle-proof")
+
+
 def get_latest_block(source: str = "blockstream") -> dict[str, Any]:
     """Return the latest block from Blockstream or mempool.space."""
     return get_block(get_latest_block_hash(source=source), source=source)

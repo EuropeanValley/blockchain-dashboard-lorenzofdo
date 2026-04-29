@@ -37,7 +37,7 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 | M2 | Block Header Analyzer | ✅ Complete | 21 Apr 2026 |
 | M3 | Difficulty History | ✅ Complete | 21 Apr 2026 |
 | M4 | AI Component (Difficulty Predictor) | ✅ Complete | 27 Apr 2026 |
-| M5 | Merkle Proof Verifier *(optional)* | 🔲 Not started | — |
+| M5 | Merkle Proof Verifier *(optional)* | ✅ Complete | 29 Apr 2026 |
 | M6 | Security Score *(optional)* | 🔲 Not started | — |
 | M7 | Second AI Approach *(optional)* | 🔲 Not started | — |
 
@@ -51,6 +51,7 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 - M2 complete: latest block header is rebuilt locally, double-SHA256 is checked against the API hash, and PoW verification is visible in the dashboard.
 - M3 complete: dashboard implemented with completed 2016-block periods, retarget markers, timing ratios, response map, consensus clamp explanation, and one-year difficulty context.
 - M4 complete: regression-based difficulty predictor trained on real completed retarget periods, evaluated with MAE/MAPE, and integrated into the dashboard.
+- M5 optional complete: real transaction Merkle proof is rebuilt step by step and checked against the block header Merkle root.
 - Real data connected from Blockstream, mempool.space, and Blockchain.com, with centralized API error handling.
 - Final report outline started in `report/REPORT_OUTLINE.md`.
 
@@ -60,9 +61,9 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 
 Checkpoint actions before 29 April 2026:
 
-- Run a final Streamlit walkthrough of M1, M2, M3, and M4 with live APIs.
+- Run a final Streamlit walkthrough of M1, M2, M3, M4, and M5 with live APIs.
 - Capture screenshots for the final report.
-- Decide whether to attempt an optional module (M5, M6, or M7) after the checkpoint.
+- Decide whether to attempt another optional module (M6 or M7) after the checkpoint.
 
 ---
 
@@ -141,6 +142,15 @@ Checkpoint actions before 29 April 2026:
 - [x] Centralized API request error handling in `api/blockchain_client.py`
 - [x] Added `report/REPORT_OUTLINE.md` with the required final report structure
 - [ ] Run final Streamlit walkthrough with live APIs before the 29 April checkpoint
+
+### Session 7 — M5 Merkle Proof Verifier (29 April 2026)
+
+- [x] `modules/m5_merkle_proof.py` implemented as an optional cryptographic extension
+- [x] Added Blockstream helpers for block transaction IDs and Electrum-style Merkle proofs
+- [x] Rebuilt the transaction-to-root path locally using double SHA-256
+- [x] Compared the computed Merkle root with the block header `merkle_root`
+- [x] Added a Cosmograph-inspired node-link graph for the Merkle inclusion path
+- [x] Integrated M5 into the Streamlit module selector
 
 ---
 

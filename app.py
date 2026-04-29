@@ -8,6 +8,7 @@ from modules.m1_pow_monitor import render as render_m1
 from modules.m2_block_header import render as render_m2
 from modules.m3_difficulty_history import render as render_m3
 from modules.m4_ai_component import render as render_m4
+from modules.m5_merkle_proof import render as render_m5
 
 
 def _auto_refresh(interval_seconds: int) -> None:
@@ -269,6 +270,7 @@ with st.sidebar:
             "M2 Block Header Analyzer",
             "M3 Difficulty History",
             "M4 AI Component",
+            "M5 Merkle Proof Verifier",
         ],
         index=0,
     )
@@ -291,5 +293,7 @@ elif selected_module == "M2 Block Header Analyzer":
     render_m2()
 elif selected_module == "M3 Difficulty History":
     render_m3()
-else:
+elif selected_module == "M4 AI Component":
     render_m4()
+else:
+    render_m5()

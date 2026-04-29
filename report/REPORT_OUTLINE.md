@@ -7,6 +7,7 @@ Explain how the dashboard uses real Bitcoin data to connect the course concepts 
 - M1 Proof of Work Monitor: current difficulty, compact `bits`, target threshold, leading zero bits, recent block intervals, and estimated network hashrate.
 - M2 Block Header Analyzer: 80-byte header fields, little-endian serialization, double SHA-256, local proof-of-work verification, and target comparison.
 - M3 Difficulty History: 2016-block retarget periods, actual time vs target time, difficulty changes, and the consensus clamp.
+- M5 Merkle Proof Verifier: transaction inclusion proof, sibling hash path, double SHA-256 reconstruction, node-link visualization inspired by Cosmograph, and comparison with the block header Merkle root.
 
 ## 2. AI Component
 
@@ -31,6 +32,7 @@ Chosen approach: difficulty-adjustment predictor.
 - M2 local block verification result.
 - M3 difficulty history and retarget response map.
 - M4 holdout prediction/evaluation view.
+- M5 Merkle proof verification result.
 
 ## 5. Final Checks Before PDF Export
 
