@@ -38,8 +38,6 @@ CryptoChain Analyzer Dashboard — Real-time Bitcoin cryptographic metrics with 
 | M3 | Difficulty History | ✅ Complete | 21 Apr 2026 |
 | M4 | AI Component (Difficulty Predictor) | ✅ Complete | 27 Apr 2026 |
 | M5 | Merkle Proof Verifier *(optional)* | ✅ Complete | 29 Apr 2026 |
-| M6 | Security Score *(optional)* | 🔲 Not started | — |
-| M7 | Second AI Approach *(optional)* | 🔲 Not started | — |
 
 > Status legend: 🔲 Not started · 🔄 In progress · ✅ Complete · ⚠️ Has issues
 
