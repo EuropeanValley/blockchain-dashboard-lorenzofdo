@@ -1,0 +1,155 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 3 /Kids [5 0 R 7 0 R 9 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 4593 >>
+stream
+BT /F2 18 Tf 1 0 0 1 56 772 Tm (CryptoChain Analyzer Dashboard - Final Report) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 744 Tm (Hash Functions and Blockchain - Cryptography, UAX 2025-26 Student: Lorenzo Ferrer De Oya) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 729 Tm (Repository: blockchain-dashboard-lorenzofdo) Tj ET
+BT /F2 13 Tf 1 0 0 1 56 712 Tm (1. Cryptographic metrics displayed and their meaning) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 692 Tm (The dashboard was designed as a live cryptography tool rather than as a financial Bitcoin) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 677 Tm (tracker. Each module displays a different part of Bitcoin's consensus machinery using public) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 662 Tm (blockchain data from Blockstream Esplora, mempool.space, and Blockchain.com.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 645 Tm (M1 - Proof of Work Monitor focuses on the mining threshold and on recent block production.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 630 Tm (It displays the current difficulty, the compact bits field, the target derived from bits,) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 615 Tm (the latest block hash, the nonce, leading-zero bits, recent inter-block times, and an) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 600 Tm (estimated network hash rate. These metrics explain the meaning of Proof of Work in practice:) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 585 Tm (miners repeatedly hash candidate headers until the resulting double-SHA256 digest is) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 570 Tm (numerically lower than the target. The bits field is important because it encodes this) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 555 Tm (target in compact form inside the header. Difficulty measures how small the target is) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 540 Tm (compared with Bitcoin's reference difficulty, while leading-zero bits provide a visible) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 525 Tm (intuition for why valid hashes look rare. The inter-block interval plots also show that) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 510 Tm (blocks do not arrive every 10 minutes exactly; instead, they fluctuate around the 600-second) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 495 Tm (target because mining is probabilistic.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 478 Tm (M2 - Block Header Analyzer verifies a real block locally. The module rebuilds the 80-byte) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 463 Tm (Bitcoin block header from its six fields: version, previous block hash, Merkle root,) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 448 Tm (timestamp, bits, and nonce. It then computes SHA256\(SHA256\(header\)\) with Python hashlib,) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 433 Tm (compares the locally reconstructed display hash with the explorer hash, and checks whether) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 418 Tm (the resulting integer is below the target derived from bits. This is the most direct) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 403 Tm (cryptographic proof in the dashboard because it demonstrates that block validity can be) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 388 Tm (checked independently from the API. A live verification snapshot taken on May 4, 2026) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 373 Tm (confirmed the process for block height 947,865: the locally computed hash matched the API) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 358 Tm (hash, the Proof-of-Work check returned true, and the block showed 78 leading-zero bits.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 341 Tm (M3 - Difficulty History explains how Bitcoin keeps the average block interval near 10) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 326 Tm (minutes. Bitcoin retargets difficulty every 2016 blocks. For each completed retarget period,) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 311 Tm (the dashboard computes the real elapsed time, the ratio actual_period_time /) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 296 Tm (target_period_time, the observed average block interval, and the difficulty change applied) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 281 Tm (at the next retarget. It also shows the Bitcoin consensus clamp, which limits one retarget) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 266 Tm (step to a factor between 0.25x and 4x. This matters because the protocol must remain stable) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 251 Tm (even when hash power changes abruptly. In a live snapshot on May 4, 2026, the most recent) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 236 Tm (completed period had an actual-to-target ratio of 1.023576, which implied an expected next) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 221 Tm (adjustment of -2.303256%; the observed next change was -2.303085%. The near-perfect match) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 206 Tm (showed that the dashboard's retarget calculations were aligned with Bitcoin consensus) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 191 Tm (behavior.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 5131 >>
+stream
+BT /F1 11 Tf 1 0 0 1 56 772 Tm (M5 - Merkle Proof Verifier adds a second cryptographic verification path. Instead of) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 757 Tm (validating mining, it validates transaction inclusion. The module takes a real transaction) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 742 Tm (from a block, loads its Electrum-style Merkle proof, reconstructs the sibling-hash path with) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 727 Tm (double SHA-256, and checks whether the computed Merkle root equals the merkle_root stored in) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 712 Tm (the block header. This proves that a transaction belongs to a block without downloading) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 697 Tm (every transaction in the block. The Merkle path graph and the step-by-step table make the) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 682 Tm (left/right concatenation order visible, which is essential for understanding why the proof) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 667 Tm (is valid.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 650 Tm (Together, these metrics show the main cryptographic layers of the project: hash-based mining) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 635 Tm (thresholds \(M1\), full local block-header verification \(M2\), consensus difficulty adjustment) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 620 Tm (over time \(M3\), and Merkle inclusion proofs for transactions \(M5\).) Tj ET
+BT /F2 13 Tf 1 0 0 1 56 603 Tm (2. AI model chosen, why it was chosen, and evaluation results) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 583 Tm (The AI component implemented in M4 is an interpretable linear regression model that predicts) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 568 Tm (the next Bitcoin difficulty adjustment. This choice was deliberate. The prediction target is) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 553 Tm (not price or market behavior but a consensus variable that depends on completed 2016-block) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 538 Tm (periods. The input rows are therefore structured, relatively small in number, and directly) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 523 Tm (connected to protocol rules. An interpretable regression model is more appropriate than a) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 508 Tm (black-box neural network because the course focuses on explainability and on linking data) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 493 Tm (analysis back to cryptographic protocol behavior.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 476 Tm (The training dataset is built from completed retarget periods. For each row, the dashboard) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 461 Tm (extracts features that are meaningful for the next adjustment: log difficulty, the) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 446 Tm (actual-versus-target timing ratio, the formula-based expected adjustment, the previous) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 431 Tm (retarget change, and the observed average block interval. The label is the actual difficulty) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 416 Tm (change applied at the following retarget. This keeps the model grounded in real blockchain) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 401 Tm (history rather than in synthetic data.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 384 Tm (The model is evaluated on held-out retarget periods using MAE and MAPE, as requested in the) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 369 Tm (project outline. A live evaluation snapshot taken on May 4, 2026 with 24 completed periods) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 354 Tm (and 5 holdout periods produced the following results:) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 337 Tm (- Training rows: 19) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 321 Tm (- Holdout rows: 5) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 305 Tm (- MAE: 388,873,762.46 difficulty units) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 289 Tm (- MAPE: 0.000281%) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 273 Tm (- Baseline MAE from the raw formula response: 687,342,053.88 difficulty units) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 257 Tm (These results are meaningful in two ways. First, the absolute percentage error is extremely) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 242 Tm (small because Bitcoin difficulty values are numerically huge, so even large absolute) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 227 Tm (deviations correspond to tiny relative errors. Second, the learned model improved over a) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 212 Tm (simple baseline that uses only the direct formula response from the current timing ratio.) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 197 Tm (The dashboard outputs both the predicted percentage adjustment and the resulting predicted) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 182 Tm (difficulty value for the next retarget. For the current live cycle, that forecast is guided) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 167 Tm (by the current mempool.space timing estimate used as an input feature rather than being a) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 152 Tm (fully closed historical forecast. On the same snapshot date, the model predicted a next) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 137 Tm (change of +3.402125%, while the mempool.space reference estimate was +3.401763%. This close) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 122 Tm (agreement suggests that the chosen features capture the core dynamics of the current) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 107 Tm (adjustment cycle while keeping the model simple and interpretable.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 1796 >>
+stream
+BT /F1 11 Tf 1 0 0 1 56 772 Tm (The main limitation is that the model operates on a relatively small number of completed) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 757 Tm (retarget periods and is intentionally lightweight. That is acceptable for this project) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 742 Tm (because the goal is not to outperform specialized forecasting systems, but to demonstrate a) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 727 Tm (justified AI approach, evaluate it properly, and integrate it into the dashboard in a way) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 712 Tm (that remains easy to explain.) Tj ET
+BT /F2 13 Tf 1 0 0 1 56 695 Tm (3. External references) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 675 Tm (The project relies on both primary technical references and live public API documentation:) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 658 Tm (- Nakamoto, S. \(2008\). *Bitcoin: A Peer-to-Peer Electronic Cash System.*) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 643 Tm (  https://bitcoin.org/bitcoin.pdf) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 627 Tm (- Blockstream Esplora API documentation.) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 612 Tm (  https://github.com/Blockstream/esplora/blob/master/API.md) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 596 Tm (- mempool.space REST API documentation. https://mempool.space/docs/api/rest) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 580 Tm (- Blockchain.com Charts API documentation.) Tj ET
+BT /F1 11 Tf 1 0 0 1 68 565 Tm (  https://www.blockchain.com/en/api/charts_api) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 549 Tm (The whitepaper was especially important for the interpretation of Proof of Work, block) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 534 Tm (chaining, and the role of the Merkle root in the block header. The public API references) Tj ET
+BT /F1 11 Tf 1 0 0 1 56 519 Tm (were necessary to connect those concepts to live network data in the dashboard.) Tj ET
+endstream
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000019 00000 n 
+0000000068 00000 n 
+0000000137 00000 n 
+0000000207 00000 n 
+0000000282 00000 n 
+0000000418 00000 n 
+0000005063 00000 n 
+0000005199 00000 n 
+0000010382 00000 n 
+0000010519 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+12368
+%%EOF
