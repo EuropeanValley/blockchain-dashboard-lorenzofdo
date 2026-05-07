@@ -9,6 +9,8 @@ from modules.m2_block_header import render as render_m2
 from modules.m3_difficulty_history import render as render_m3
 from modules.m4_ai_component import render as render_m4
 from modules.m5_merkle_proof import render as render_m5
+from modules.m6_security_score import render as render_m6
+from modules.m7_anomaly_detector import render as render_m7
 
 
 def _auto_refresh(interval_seconds: int) -> None:
@@ -271,6 +273,8 @@ with st.sidebar:
             "M3 Difficulty History",
             "M4 AI Component",
             "M5 Merkle Proof Verifier",
+            "M6 Security Score",
+            "M7 Second AI Approach",
         ],
         index=0,
     )
@@ -295,5 +299,9 @@ elif selected_module == "M3 Difficulty History":
     render_m3()
 elif selected_module == "M4 AI Component":
     render_m4()
-else:
+elif selected_module == "M5 Merkle Proof Verifier":
     render_m5()
+elif selected_module == "M6 Security Score":
+    render_m6()
+else:
+    render_m7()
