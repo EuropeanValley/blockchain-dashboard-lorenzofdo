@@ -16,9 +16,11 @@ The dashboard was designed as a live cryptography tool rather than as a financia
 
 **M5 - Merkle Proof Verifier** adds a second cryptographic verification path. Instead of validating mining, it validates transaction inclusion. The module takes a real transaction from a block, loads its Electrum-style Merkle proof, reconstructs the sibling-hash path with double SHA-256, and checks whether the computed Merkle root equals the `merkle_root` stored in the block header. This proves that a transaction belongs to a block without downloading every transaction in the block. The Merkle path graph and the step-by-step table make the left/right concatenation order visible, which is essential for understanding why the proof is valid.
 
-Together, these metrics show the main cryptographic layers of the project: hash-based mining thresholds (M1), full local block-header verification (M2), consensus difficulty adjustment over time (M3), and Merkle inclusion proofs for transactions (M5).
+**M6 - Security Score** was added as optional extra content on **May 7, 2026**. It estimates the cost in USD per hour of controlling majority hashrate using the live network hashrate derived from Bitcoin difficulty. The calculation uses the standard relation `hashrate = difficulty * 2^32 / 600`, then estimates the attacker hashrate needed to reach a selected share of total hashpower. The dashboard exposes assumptions for electricity price, miner efficiency, hardware cost, and amortization, so the estimate is transparent instead of hardcoded. M6 also implements the double-spend catch-up probability from Nakamoto's Section 11. The chart shows that for attackers below 50% hashpower, confirmation depth sharply reduces the probability of catching up; for an attacker with majority hashpower, the eventual catch-up probability tends to 1. This module goes beyond the required core by connecting Proof of Work to a security economics question.
 
-## 2. AI model chosen, why it was chosen, and evaluation results
+Together, these metrics show the main cryptographic layers of the project: hash-based mining thresholds (M1), full local block-header verification (M2), consensus difficulty adjustment over time (M3), Merkle inclusion proofs for transactions (M5), and optional security-economic analysis of majority attacks (M6).
+
+## 2. AI models chosen, why they were chosen, and evaluation results
 
 The AI component implemented in **M4** is an **interpretable linear regression model** that predicts the **next Bitcoin difficulty adjustment**. This choice was deliberate. The prediction target is not price or market behavior but a consensus variable that depends on completed 2016-block periods. The input rows are therefore structured, relatively small in number, and directly connected to protocol rules. An interpretable regression model is more appropriate than a black-box neural network because the course focuses on explainability and on linking data analysis back to cryptographic protocol behavior.
 
@@ -36,6 +38,10 @@ These results are meaningful in two ways. First, the absolute percentage error i
 
 The main limitation is that the model operates on a relatively small number of completed retarget periods and is intentionally lightweight. That is acceptable for this project because the goal is not to outperform specialized forecasting systems, but to demonstrate a justified AI approach, evaluate it properly, and integrate it into the dashboard in a way that remains easy to explain.
 
+As optional extra content, **M7** adds a **second AI approach** different from M4: an unsupervised anomaly detector for inter-block times. The theoretical baseline is the exponential distribution, because Proof-of-Work mining can be modeled as repeated independent hash trials until a valid block is found. M7 trains by fitting the mean interval on recent real Bitcoin blocks, then scores each interval using a two-sided tail probability. Very short and very long intervals can both be anomalous. The detector reports three unsupervised evaluation metrics: the **KS statistic** to compare observed intervals with the fitted exponential distribution, **negative log-likelihood** to measure fit quality, and **anomaly rate** to show how many blocks cross the selected p-value threshold.
+
+M4 and M7 therefore cover two different AI tasks. M4 is a supervised regression problem with a future numerical target and explicit holdout labels. M7 is an unsupervised statistical detection problem where the output is not a forecast but a risk flag for unusual block timing. The dashboard includes a direct comparison table so the evaluator can see the difference in input data, target, model type, and metric choice.
+
 ## 3. External references
 
 The project relies on both primary technical references and live public API documentation:
@@ -45,4 +51,4 @@ The project relies on both primary technical references and live public API docu
 - mempool.space REST API documentation. https://mempool.space/docs/api/rest
 - Blockchain.com Charts API documentation. https://www.blockchain.com/en/api/charts_api
 
-The whitepaper was especially important for the interpretation of Proof of Work, block chaining, and the role of the Merkle root in the block header. The public API references were necessary to connect those concepts to live network data in the dashboard.
+The whitepaper was especially important for the interpretation of Proof of Work, block chaining, the role of the Merkle root in the block header, and the confirmation-depth probability model used in optional M6. The public API references were necessary to connect those concepts to live network data in the dashboard.
